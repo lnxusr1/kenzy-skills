@@ -31,7 +31,7 @@ class HomeAssistantSkill(GenericSkill):
         self._file_areas = os.path.join(tempfile.gettempdir(), "ha_areas")
 
         self.name = "HomeAssistantSkill"
-        self.description = "Control HomeAssistant Devices"
+        self.description = "Control HomeAssistant lights, fans, covers, and doors"
         self._version = [1, 0, 2]
 
         self.logger.debug(f"{self.name} loaded successfully.")

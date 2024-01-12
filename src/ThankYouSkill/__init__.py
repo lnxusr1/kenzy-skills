@@ -14,7 +14,7 @@ class ThankYouSkill(GenericSkill):
         super().__init__(**kwargs)
 
         self.name = "ThankYouSkill"
-        self.description = "Politely respond to Thank You"
+        self.description = "Politely responds to Thank You"
         self._version = [1, 0, 1]
         
         self.logger.debug(f"{self.name} loaded successfully.")

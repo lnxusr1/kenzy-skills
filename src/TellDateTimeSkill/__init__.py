@@ -16,7 +16,7 @@ class TellDateTimeSkill(GenericSkill):
         super().__init__(**kwargs)
 
         self.name = "TellDateTimeSkill"
-        self.description = "Tells date and time when asked"
+        self.description = "Gives the current date and time"
         self._version = [1, 0, 1]
 
         self.logger.debug(f"{self.name} loaded successfully.")

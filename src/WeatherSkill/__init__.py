@@ -17,7 +17,7 @@ class WeatherSkill(GenericSkill):
         super().__init__(**kwargs)
 
         self.name = "WeatherSkill"
-        self.description = "Get weather updates"
+        self.description = "Retrieves and displays current weather conditions."
         self._version = [1, 0, 0]
 
         self.api_key = None

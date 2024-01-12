@@ -15,7 +15,7 @@ class AboutSkill(GenericSkill):
         super().__init__(**kwargs)
 
         self.name = "AboutSkill"
-        self.description = "Q&A about KENZY"
+        self.description = "Info about KENZY"
         self._version = [1, 0, 0]
 
         self.logger.debug(f"{self.name} loaded successfully.")
