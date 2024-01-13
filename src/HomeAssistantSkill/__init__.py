@@ -40,7 +40,7 @@ class HomeAssistantSkill(GenericSkill):
 
         self.name = "HomeAssistantSkill"
         self.description = "Control HomeAssistant lights, fans, covers, and doors"
-        self._version = [1, 0, 2]
+        self._version = [1, 1, 0]
 
         self.logger.debug(f"{self.name} loaded successfully.")
 

@@ -57,7 +57,7 @@
         "path": "WeatherSkill",
         "name": "WeatherSkill",
         "description": "Retrieves and displays current weather conditions.",
-        "version": "1.0.0"
+        "version": "1.0.1"
     },
     "AboutSkill": {
         "path": "AboutSkill",
@@ -69,6 +69,6 @@
         "path": "HomeAssistantSkill",
         "name": "HomeAssistantSkill",
         "description": "Control HomeAssistant lights, fans, covers, and doors",
-        "version": "1.0.2"
+        "version": "1.1.0"
     }
 }

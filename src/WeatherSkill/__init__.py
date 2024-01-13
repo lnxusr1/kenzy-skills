@@ -18,7 +18,7 @@ class WeatherSkill(GenericSkill):
 
         self.name = "WeatherSkill"
         self.description = "Retrieves and displays current weather conditions."
-        self._version = [1, 0, 0]
+        self._version = [1, 0, 1]
 
         self.api_key = None
         self.lattitude = None
