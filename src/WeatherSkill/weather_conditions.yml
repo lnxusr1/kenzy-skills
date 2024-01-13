@@ -1,0 +1,55 @@
+200:  light rain and thunderstorms
+201:  thunderstorms
+202:  heavy rain and thunderstorms
+210:  scattered thunderstorms
+211:  thunderstorms
+212:  strong thunderstorms
+221:  scattered thunderstorms
+230:  light drizzles of rain and thunderstorms
+231:  rain drizzles and thunderstorms
+232:  heavy drizzles of rain and thunderstorms
+300:  a light drizzle
+301:  a drizzle
+302:  a heavy drizzle
+310:  light rain
+311:  rain
+312:  heavy rain
+313:  mostly drizzles with some rain showers
+314:  mostly drizzles with some heavy rain showers
+321:  light rain
+500:  light rain
+501:  moderate rain
+502:  heavy rain
+503:  very heavy rain
+504:  extreme rain
+511:  freezing rain
+520:  light rain showers
+521:  rain showers
+522:  heavy rain showers
+531:  scattered rain showers
+600:  snow flurries
+601:  snow
+602:  heavy snow
+611:  sleet
+612:  light sleet
+613:  periodic sleet
+615:  light rain and snow mix
+616:  rain and snow mix
+620:  light snow showers
+621:  snow showers
+622:  heavy snow showers
+701:  mist
+711:  smoke
+721:  haze
+731:  sand and dust whirls
+741:  fog
+751:  sand
+761:  dust
+762:  volcanic ash
+771:  squalls
+781:  tornados
+800:  clear skies
+801: a few clouds
+802:  scattered clouds
+803:  broken clouds
+804:  overcast clouds
