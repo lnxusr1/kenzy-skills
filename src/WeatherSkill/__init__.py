@@ -126,7 +126,7 @@ class WeatherSkill(GenericSkill):
 
             if wind_speed >= 5:
                 
-                wind_details = f". The wind blowing at about {int(data.get('wind').get('speed', 0))} {units} "
+                wind_details = f". The wind is blowing at about {int(data.get('wind').get('speed', 0))} {units} "
 
                 if data.get("wind", {}).get("deg", -1) <= 15 or data.get("wind", {}).get("deg", -1) > 345:
                     wind_details = f"{wind_details} from the north"
