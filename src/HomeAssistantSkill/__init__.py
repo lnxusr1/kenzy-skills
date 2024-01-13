@@ -2,6 +2,8 @@ import os
 import requests
 import tempfile
 import json
+import time
+import threading
 from kenzy import GenericSkill
 from kenzy.extras import strip_punctuation
 
@@ -24,6 +26,12 @@ class HomeAssistantSkill(GenericSkill):
 
         self._headers = {}
         self._intent_map = {}
+        self._dev_timers = {}
+        self._timer_running = threading.Event()
+        self._timer_running.clear()
+        self._timer_thread = None
+        self._timer_delay = 0
+        self._triggers = []
 
         self._file_lights = os.path.join(tempfile.gettempdir(), "ha_lights")
         self._file_covers = os.path.join(tempfile.gettempdir(), "ha_covers")
@@ -49,6 +57,8 @@ class HomeAssistantSkill(GenericSkill):
         self.url = self.get_setting("url")
         self.area_alias_overrides = self.get_setting("area_aliases")
         self.entity_alias_overrides = self.get_setting("entity_aliases")
+        self._timer_delay = self.get_setting("timer_delay", 0.5)
+        self._triggers = self.get_setting("triggers", [])
 
         if self.url is None or self.token is None:
             return False
@@ -95,6 +105,9 @@ class HomeAssistantSkill(GenericSkill):
 
         self.register_type_trigger("kenzy.image", self.handle_homeassistant_image_trigger)
 
+        self._timer_thread = threading.Thread(target=self._image_timer, daemon=True)
+        self._timer_thread.start()
+
         self.logger.debug(f"{self.name} initialized.")
         return True
 
@@ -107,8 +120,8 @@ class HomeAssistantSkill(GenericSkill):
 
                     if device_name not in device_names:
                         device_names.append(device_name)
-                        if (device_name.endswith("light")
-                                or device_name.endswith("fan")
+                        if (device_name.endswith("light") 
+                                or device_name.endswith("fan") 
                                 or device_name.endswith("lamp")) \
                                 and f"{device_name}s" not in device_names:
 
@@ -409,8 +422,6 @@ class HomeAssistantSkill(GenericSkill):
 
         if not is_all:
             entity_id = self._intent_map.get(type_id, {}).get(area, {}).get(entity, {}).get("entity_id")
-            #if entity_id is None and entity.endswith("s"):
-            #    entity_id = self._intent_map.get(type_id, {}).get(area, {}).get(f"{entity[:-1]}", {}).get("entity_id")
 
             if entity_id is not None:
                 entity_ids.append(entity_id)
@@ -561,10 +572,80 @@ class HomeAssistantSkill(GenericSkill):
 
         return True
 
+    def _image_timer(self):
+        self._timer_running.set()
+
+        while self._timer_running:
+            for dev_url in self._dev_timers:
+                dev_name = self.device.service.remote_devices.get(dev_url, {}).get("name", "")
+                for trg in self._triggers:
+                    if trg.get("type", "") == "camera" and trg.get("source_name", "") == dev_name:
+                        for item in self._dev_timers.get(dev_url):
+                            if item not in trg.get("filters", []):
+                                continue
+
+                            d = self._dev_timers.get(dev_url).get(item)
+                            if d.get("trigger") != d.get("status"):
+                                if time.time() > d.get("timestamp"):
+                                    d["status"] = d.get("trigger")
+
+                                    entity_id = trg.get('entity_id')
+                                    self.logger.debug("==============================================")
+                                    self.logger.debug(f"TRIGGER CHANGE {item}={d.get('status')} : {entity_id}")
+                                    
+                                    domain = entity_id.split(".", 1)[0]
+                                    service = "turn_on" if d.get("status", False) else "turn_off"
+
+                                    resp = requests.post(
+                                        f"{self.url}/api/services/{domain}/{service}", 
+                                        headers=self._headers, 
+                                        timeout=20, 
+                                        json={"entity_id": entity_id}
+                                    )
+
+                                    if resp.ok:
+                                        self.logger.debug(resp.text)
+
+            time.sleep(0.1)
+
     def handle_homeassistant_image_trigger(self, message, context=None, **kwargs):
-        #if context is not None:
-        #    self.logger.debug(f"HOMEASSISTANTSKILL: {message}")
-        self.logger.debug("HOMEASSISTANTSKILL: Not Implemented")
+        
+        if self._triggers is None or len(self._triggers) == 0:
+            return True
+
+        if isinstance(message, dict):
+            dev_url = context.url if context is not None else "unknown"
+            dev = {}
+
+            if dev_url not in self._dev_timers:
+                self._dev_timers[dev_url] = {}
+
+            for o in message.get("objects", []):
+                o_nm = o.get("name")
+
+                if o_nm is not None:
+                    if o_nm not in self._dev_timers.get(dev_url):
+                        self._dev_timers[dev_url][o_nm] = {
+                            "trigger": True, 
+                            "status": False, 
+                            "timestamp": time.time() + self._timer_delay
+                        }
+                    else:
+                        self._dev_timers[dev_url][o_nm]["trigger"] = True
+                        self._dev_timers[dev_url][o_nm]["timestamp"] = time.time() + self._timer_delay
+
+                    if o_nm not in dev:
+                        dev[o_nm] = 1
+                    else:
+                        dev[o_nm] += 1
+
+            for item in self._dev_timers.get(dev_url, {}):
+                if item not in dev:
+                    self._dev_timers[dev_url][item]["trigger"] = False
+                    self._dev_timers[dev_url][item]["timestamp"] = time.time() + self._timer_delay
+
+            self.logger.debug(f"HOMEASSISTANTSKILL: {dev}")
+            self.logger.debug(f"HOMEASSISTANTSKILL: {self._dev_timers[dev_url]}")
 
         return True
 
@@ -575,6 +656,10 @@ class HomeAssistantSkill(GenericSkill):
         Returns:
             (bool):  True on success and False on failure
         """
+        self._timer_running.clear()
+
+        if self._timer_thread is not None:
+            self._timer_thread.join()
         return True
 
 
