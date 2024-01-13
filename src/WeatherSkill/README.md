@@ -21,8 +21,8 @@ device:
   WeatherSkill:
     api_key: *enter your API key from openweathermap.org*
     units: imperial
-    lat: 36.148400
-    lon: -79.488065
+    lat:   43.878708
+    lon:   -103.458935
 ```
 
 Get your free API key from [openweathermap.org](http://openweathermap.org)
