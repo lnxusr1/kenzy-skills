@@ -1,4 +1,4 @@
-# WatcherSkill &middot Kenzy.Ai
+# WatcherSkill &middot; Kenzy.Ai
 
 The WatcherSkill leverages any attached cameras through kenzy.image to describe what is shown in total or in part.
 

@@ -1,4 +1,4 @@
-# KnockKnockSkill &middot Kenzy.Ai
+# KnockKnockSkill &middot; Kenzy.Ai
 
 The KnockKnockSkill enables Kenzy to appreciate a good Knock Knock joke by responding to your prompts if you have one you want to tell her.
 

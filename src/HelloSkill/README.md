@@ -1,4 +1,4 @@
-# HelloSkill &middot Kenzy.Ai
+# HelloSkill &middot; Kenzy.Ai
 
 The HelloSkill enables Kenzy appropriately welcome you.
 

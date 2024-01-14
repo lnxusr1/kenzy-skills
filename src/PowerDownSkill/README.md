@@ -1,4 +1,4 @@
-# PowerDownSkill &middot Kenzy.Ai
+# PowerDownSkill &middot; Kenzy.Ai
 
 The PowerDownSkill shuts down all of Kenzy's services.
 

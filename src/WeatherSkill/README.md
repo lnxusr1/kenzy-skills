@@ -1,4 +1,4 @@
-# WeatherSkill &middot Kenzy.Ai
+# WeatherSkill &middot; Kenzy.Ai
 
 The WeatherSkill provides a way to get the current weather conditions through Kenzy's voice request/response mechanisms.
 

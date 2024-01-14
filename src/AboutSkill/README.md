@@ -1,4 +1,4 @@
-# AboutSkill &middot Kenzy.Ai
+# AboutSkill &middot; Kenzy.Ai
 
 The AboutSkill provides some basic information about Kenzy.
 

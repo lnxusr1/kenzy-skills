@@ -1,4 +1,4 @@
-# CheckVersionSkill &middot Kenzy.Ai
+# CheckVersionSkill &middot; Kenzy.Ai
 
 The CheckVersionSkill provides the current version of the kenzy software.
 

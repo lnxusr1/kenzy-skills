@@ -1,4 +1,4 @@
-# TellJokeSkill &middot Kenzy.Ai
+# TellJokeSkill &middot; Kenzy.Ai
 
 The TellJokeSkill tells a random joke.
 
