@@ -1,4 +1,4 @@
-# FlipACoinSkill &middot Kenzy.Ai
+# FlipACoinSkill &middot; Kenzy.Ai
 
 The FlipACoinSkill randomly chooses between heads or tails.
 

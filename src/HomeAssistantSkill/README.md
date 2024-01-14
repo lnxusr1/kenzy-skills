@@ -1,4 +1,4 @@
-# HomeAssistantSkill &middot Kenzy.Ai
+# HomeAssistantSkill &middot; Kenzy.Ai
 
 The HomeAssistantSkill enables Kenzy to interact with your installation of HomeAssistant.  It requires configuration in order to work properly.
 

@@ -1,4 +1,4 @@
-# TellDateTimeSkill &middot Kenzy.Ai
+# TellDateTimeSkill &middot; Kenzy.Ai
 
 The TellDateTimeSkill gives the current day, date, and/or time based on your prompt.
 

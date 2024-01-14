@@ -1,4 +1,4 @@
-# ThankYouSkill &middot Kenzy.Ai
+# ThankYouSkill &middot; Kenzy.Ai
 
 The ThankYouSkill will politely respond to the phrase "Thank you"
 
