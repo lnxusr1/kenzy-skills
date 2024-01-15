@@ -18,7 +18,7 @@ with open(os.path.join(os.path.dirname(__file__), "README.md"), "w", encoding="U
     ks.write("# KENZY.Ai Skills &middot; [![GitHub license](https://img.shields.io/github/license/lnxusr1/kenzy-skills)](https://github.com/lnxusr1/kenzy-skills/blob/master/LICENSE) ![Python Versions](https://img.shields.io/pypi/pyversions/yt2mp3.svg)\n\n")
     ks.write("Skills for kenzy.skillmanager\n\n")
 
-    for skill_name in os.listdir(source_folder):
+    for skill_name in sorted(os.listdir(source_folder)):
         if os.path.isdir(os.path.join(source_folder, skill_name)):
             try:
                 exec(f"import {skill_name}")
