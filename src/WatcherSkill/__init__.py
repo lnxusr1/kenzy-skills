@@ -19,7 +19,7 @@ class WatcherSkill(GenericSkill):
         self.plurals = {}
         self.name = "WatcherSkill"
         self.description = "Query kenzy.image devices"
-        self._version = [1, 0, 0]
+        self._version = [1, 0, 1]
         
         self.logger.debug(f"{self.name} loaded successfully.")
     
@@ -68,7 +68,7 @@ class WatcherSkill(GenericSkill):
         if len(objects) > 0:
             text_arr = []
             for x in objects:
-                t = x if objects.get(x) == 1 else self.plurals.get(x, x)
+                t = x if objects.get(x) == 1 else self.plurals.get(x, f"{x}s")
                 text_arr.append(str(f"{objects.get(x)} {t}"))
 
             if len(text_arr) > 1:
@@ -84,11 +84,9 @@ class WatcherSkill(GenericSkill):
         elif len(motion) > 0:
             area = "areas" if len(motion) > 1 else "area"
             return self.say(f"I see motion in {len(motion)} {area}.", context=context)
-        else:
-            return self.say("I don't see anything at the moment.", context=context)
         
-        return False
-    
+        return self.say("I don't see anything at the moment.", context=context)
+
     def stop(self):
         """
         Method to stop any daemons created during startup/initialization for this skill.

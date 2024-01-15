@@ -40,7 +40,7 @@ class HomeAssistantSkill(GenericSkill):
 
         self.name = "HomeAssistantSkill"
         self.description = "Control HomeAssistant lights, fans, covers, and doors"
-        self._version = [1, 1, 0]
+        self._version = [1, 1, 1]
 
         self.logger.debug(f"{self.name} loaded successfully.")
 
@@ -299,6 +299,11 @@ class HomeAssistantSkill(GenericSkill):
             sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_type} (in this |) (room | location | place |)\n")
             sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_type} (in this |) (room | location | place |)\n")
             sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_type} (in this |) (room | location | place |)\n")
+            sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_lights} (in this |) (room | location | place |)\n")
+            sw.write("(please |) turn (all |) (the |) {ha_type} {ha_on_off} (in this |) (room | location | place |)\n")
+            sw.write("(please |) turn (all |) (the |) {ha_type} {ha_on_off} (in this |) (room | location | place |)\n")
+            sw.write("(please |) turn (all |) (the |) {ha_type} {ha_on_off} (in this |) (room | location | place |)\n")
+            sw.write("(please |) turn (all |) (the |) {ha_lights} {ha_on_off} (in this |) (room | location | place |)\n")
 
             sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_area} {ha_lights}\n")
             sw.write("(please |) turn (the |) {ha_area} {ha_lights} (all |) {ha_on_off}\n")

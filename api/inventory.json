@@ -1,8 +1,38 @@
 {
+    "AboutSkill": {
+        "path": "AboutSkill",
+        "name": "AboutSkill",
+        "description": "Info about KENZY",
+        "version": "1.0.0"
+    },
     "CheckVersionSkill": {
         "path": "CheckVersionSkill",
         "name": "CheckVersionSkill",
         "description": "Get software version",
+        "version": "1.0.0"
+    },
+    "FlipACoinSkill": {
+        "path": "FlipACoinSkill",
+        "name": "FlipACoinSkill",
+        "description": "Flips a coin for heads or tails",
+        "version": "1.0.0"
+    },
+    "HelloSkill": {
+        "path": "HelloSkill",
+        "name": "HelloSkill",
+        "description": "Generic greeting responses",
+        "version": "1.0.0"
+    },
+    "HomeAssistantSkill": {
+        "path": "HomeAssistantSkill",
+        "name": "HomeAssistantSkill",
+        "description": "Control HomeAssistant lights, fans, covers, and doors",
+        "version": "1.1.1"
+    },
+    "KnockKnockSkill": {
+        "path": "KnockKnockSkill",
+        "name": "KnockKnockSkill",
+        "description": "Respond to Knock Knock jokes",
         "version": "1.0.0"
     },
     "PowerDownSkill": {
@@ -17,34 +47,10 @@
         "description": "Gives the current date and time",
         "version": "1.0.1"
     },
-    "HelloSkill": {
-        "path": "HelloSkill",
-        "name": "HelloSkill",
-        "description": "Generic greeting responses",
-        "version": "1.0.0"
-    },
-    "WatcherSkill": {
-        "path": "WatcherSkill",
-        "name": "WatcherSkill",
-        "description": "Query kenzy.image devices",
-        "version": "1.0.0"
-    },
     "TellJokeSkill": {
         "path": "TellJokeSkill",
         "name": "TellJokeSkill",
         "description": "Tells a random joke",
-        "version": "1.0.0"
-    },
-    "KnockKnockSkill": {
-        "path": "KnockKnockSkill",
-        "name": "KnockKnockSkill",
-        "description": "Respond to Knock Knock jokes",
-        "version": "1.0.0"
-    },
-    "FlipACoinSkill": {
-        "path": "FlipACoinSkill",
-        "name": "FlipACoinSkill",
-        "description": "Flips a coin for heads or tails",
         "version": "1.0.0"
     },
     "ThankYouSkill": {
@@ -53,22 +59,16 @@
         "description": "Politely responds to Thank You",
         "version": "1.0.1"
     },
+    "WatcherSkill": {
+        "path": "WatcherSkill",
+        "name": "WatcherSkill",
+        "description": "Query kenzy.image devices",
+        "version": "1.0.1"
+    },
     "WeatherSkill": {
         "path": "WeatherSkill",
         "name": "WeatherSkill",
         "description": "Retrieves and displays current weather conditions.",
         "version": "1.0.1"
-    },
-    "AboutSkill": {
-        "path": "AboutSkill",
-        "name": "AboutSkill",
-        "description": "Info about KENZY",
-        "version": "1.0.0"
-    },
-    "HomeAssistantSkill": {
-        "path": "HomeAssistantSkill",
-        "name": "HomeAssistantSkill",
-        "description": "Control HomeAssistant lights, fans, covers, and doors",
-        "version": "1.1.0"
     }
 }
