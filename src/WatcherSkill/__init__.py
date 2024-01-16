@@ -19,7 +19,7 @@ class WatcherSkill(GenericSkill):
         self.plurals = {}
         self.name = "WatcherSkill"
         self.description = "Query kenzy.image devices"
-        self._version = [1, 0, 1]
+        self._version = [1, 0, 2]
         
         self.logger.debug(f"{self.name} loaded successfully.")
     
@@ -76,9 +76,10 @@ class WatcherSkill(GenericSkill):
 
             text = ", ".join(text_arr)
 
+            text2 = ""
             if len(motion) > 0:
                 area = "areas" if len(motion) > 1 else "area"
-                text2 = f" with motion in {len(motion)} {area}."
+                text2 = f" with motion in {len(motion)} {area}"
 
             return self.say(f"I see {text}{text2}.", context=context)
         elif len(motion) > 0:
