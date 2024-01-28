@@ -15,7 +15,7 @@ class PowerDownSkill(GenericSkill):
 
         self.name = "PowerDownSkill"
         self.description = "Shutdown all services"
-        self._version = [1, 0, 0]
+        self._version = [1, 0, 1]
 
         self.logger.debug(f"{self.name} loaded successfully.")
     
@@ -43,8 +43,9 @@ class PowerDownSkill(GenericSkill):
         """
 
         text = self.getMessageFromDialog("powerdown_confirm.dialog")
-        if str(message).lower().strip().strip("?.!") in ["yes","confirm","confirmed","ok"] and self.say(text, context) and self.service.shutdown():
-            return True
+        if str(message).lower().strip().strip("?.!") in ["yes", "confirm", "confirmed", "ok", "okay"]:
+            if self.say(text, context) and self.service.shutdown():
+                return True
         
         return False
 

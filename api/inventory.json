@@ -35,11 +35,17 @@
         "description": "Respond to Knock Knock jokes",
         "version": "1.0.0"
     },
+    "NewsSkill": {
+        "path": "NewsSkill",
+        "name": "NewsSkill",
+        "description": "RSS feed reader",
+        "version": "1.0.0"
+    },
     "PowerDownSkill": {
         "path": "PowerDownSkill",
         "name": "PowerDownSkill",
         "description": "Shutdown all services",
-        "version": "1.0.0"
+        "version": "1.0.1"
     },
     "TellDateTimeSkill": {
         "path": "TellDateTimeSkill",
