@@ -144,6 +144,8 @@ class NewsSkill(GenericSkill):
         Returns:
             (bool):  True on success and False on failure
         """
+        
+        self._is_running.clear()
         return True
         
     
