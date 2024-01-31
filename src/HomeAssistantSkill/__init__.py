@@ -40,7 +40,7 @@ class HomeAssistantSkill(GenericSkill):
 
         self.name = "HomeAssistantSkill"
         self.description = "Control HomeAssistant lights, fans, covers, and doors"
-        self._version = [1, 1, 1]
+        self._version = [1, 1, 2]
 
         self.logger.debug(f"{self.name} loaded successfully.")
 
@@ -297,11 +297,7 @@ class HomeAssistantSkill(GenericSkill):
         os.makedirs(os.path.dirname(file_name), exist_ok=True)
         with open(file_name, "w", encoding="UTF-8") as sw:
             sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_type} (in this |) (room | location | place |)\n")
-            sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_type} (in this |) (room | location | place |)\n")
-            sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_type} (in this |) (room | location | place |)\n")
             sw.write("(please |) turn {ha_on_off} (all |) (the |) {ha_lights} (in this |) (room | location | place |)\n")
-            sw.write("(please |) turn (all |) (the |) {ha_type} {ha_on_off} (in this |) (room | location | place |)\n")
-            sw.write("(please |) turn (all |) (the |) {ha_type} {ha_on_off} (in this |) (room | location | place |)\n")
             sw.write("(please |) turn (all |) (the |) {ha_type} {ha_on_off} (in this |) (room | location | place |)\n")
             sw.write("(please |) turn (all |) (the |) {ha_lights} {ha_on_off} (in this |) (room | location | place |)\n")
 
@@ -475,11 +471,11 @@ class HomeAssistantSkill(GenericSkill):
 
         if is_all:
             if entity.lower().rstrip("s") == "light":
-                self.say(f"All the lights in the {area} are now {action}.", context=context)
+                self.say(f"The lights in the {area} are now {action}.", context=context)
             elif entity.lower().rstrip("s") == "fan":
-                self.say(f"All the fans in the {area} are now {action}.", context=context)
+                self.say(f"The fans in the {area} are now {action}.", context=context)
             elif entity.lower().rstrip("s") == "lamp":
-                self.say(f"All the lamps in the {area} are now {action}.", context=context)
+                self.say(f"The lamps in the {area} are now {action}.", context=context)
 
         return True
 
