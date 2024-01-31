@@ -40,7 +40,7 @@ class HomeAssistantSkill(GenericSkill):
 
         self.name = "HomeAssistantSkill"
         self.description = "Control HomeAssistant lights, fans, covers, and doors"
-        self._version = [1, 1, 2]
+        self._version = [1, 1, 3]
 
         self.logger.debug(f"{self.name} loaded successfully.")
 
@@ -392,7 +392,7 @@ class HomeAssistantSkill(GenericSkill):
 
     def handle_homeassistant_intent_lights(self, message, context=None, **kwargs):
         self.logger.debug("==< LIGHTS >================================")
-        self.logger.debug(message)
+        self.logger.debug(f"{message}")
 
         action = message.matches.get("ha_on_off", "").replace(".", "").lower()
         entity = message.matches.get("ha_type", "").replace(".", "").lower()
@@ -454,7 +454,7 @@ class HomeAssistantSkill(GenericSkill):
 
             resp = requests.post(f"{self.url}/api/services/{type_id}/turn_{action}", headers=self._headers, timeout=20, json={ "entity_id": entity_id })
             if resp.ok:
-                self.logger.debug(resp.text)
+                self.logger.debug(f"{resp.text}")
 
                 if not is_all:
                     if entity.endswith("lights") or entity.endswith("fans") or entity.endswith("lamps"):
@@ -462,7 +462,7 @@ class HomeAssistantSkill(GenericSkill):
                     else:
                         self.say(f"{area} {entity} is now {action}.", context=context)
             else:
-                self.logger.debug(resp.text)
+                self.logger.debug(f"{resp.text}")
                 has_error = True
 
         if has_error:
@@ -481,7 +481,7 @@ class HomeAssistantSkill(GenericSkill):
 
     def handle_homeassistant_intent_covers(self, message, context=None, **kwargs):
         self.logger.debug("==< COVERS >================================")
-        self.logger.debug(message)
+        self.logger.debug(f"{message}")
 
         action = message.matches.get("ha_raise_lower", "").replace(".", "").lower().strip()
         entity = message.matches.get("ha_type", "").replace(".", "").lower().strip()
@@ -520,7 +520,7 @@ class HomeAssistantSkill(GenericSkill):
         self.logger.debug(f"ENTITY_ID: {entity_id}")
         resp = requests.post(f"{self.url}/api/services/cover/{daction}_cover", headers=self._headers, timeout=20, json={ "entity_id": entity_id })
         if resp.ok:
-            self.logger.debug(resp.text)
+            self.logger.debug(f"{resp.text}")
             if action in ["close", "raise"]:
                 action = action[:-1]
             self.say(f"{area} {entity} {action}ed.", context=context)
@@ -531,7 +531,7 @@ class HomeAssistantSkill(GenericSkill):
 
     def handle_homeassistant_intent_locks(self, message, context=None, **kwargs):
         self.logger.debug("==< LOCKS >================================")
-        self.logger.debug(message)
+        self.logger.debug(f"{message}")
 
         action = message.matches.get("ha_lock_unlock", "").replace(".", "")
         entity = message.matches.get("ha_type", "").replace(".", "")
@@ -566,7 +566,7 @@ class HomeAssistantSkill(GenericSkill):
         self.logger.debug(f"ENTITY_ID: {entity_id}")
         resp = requests.post(f"{self.url}/api/services/lock/{action}", headers=self._headers, timeout=20, json={ "entity_id": entity_id })
         if resp.ok:
-            self.logger.debug(resp.text)
+            self.logger.debug(f"{resp.text}")
             self.say(f"{entity} {action}ed.", context=context)
         else:
             self.say(f"Something went wrong while I was trying to {error_response}.", context=context)
@@ -605,7 +605,7 @@ class HomeAssistantSkill(GenericSkill):
                                     )
 
                                     if resp.ok:
-                                        self.logger.debug(resp.text)
+                                        self.logger.debug(f"{resp.text}")
 
             time.sleep(0.1)
 
