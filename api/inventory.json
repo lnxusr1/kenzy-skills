@@ -27,7 +27,7 @@
         "path": "HomeAssistantSkill",
         "name": "HomeAssistantSkill",
         "description": "Control HomeAssistant lights, fans, covers, and doors",
-        "version": "1.1.3"
+        "version": "1.1.4"
     },
     "KnockKnockSkill": {
         "path": "KnockKnockSkill",
