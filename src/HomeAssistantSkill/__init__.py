@@ -40,7 +40,7 @@ class HomeAssistantSkill(GenericSkill):
 
         self.name = "HomeAssistantSkill"
         self.description = "Control HomeAssistant lights, fans, covers, and doors"
-        self._version = [1, 1, 3]
+        self._version = [1, 1, 4]
 
         self.logger.debug(f"{self.name} loaded successfully.")
 
@@ -587,7 +587,7 @@ class HomeAssistantSkill(GenericSkill):
 
                             d = self._dev_timers.get(dev_url).get(item)
                             if d.get("trigger") != d.get("status"):
-                                if time.time() > d.get("timestamp"):
+                                if d.get("trigger", False) or time.time() > d.get("timestamp") + float(self._timer_delay):
                                     d["status"] = d.get("trigger")
 
                                     entity_id = trg.get('entity_id')
@@ -629,11 +629,11 @@ class HomeAssistantSkill(GenericSkill):
                         self._dev_timers[dev_url][o_nm] = {
                             "trigger": True, 
                             "status": False, 
-                            "timestamp": time.time() + self._timer_delay
+                            "timestamp": time.time()
                         }
                     else:
                         self._dev_timers[dev_url][o_nm]["trigger"] = True
-                        self._dev_timers[dev_url][o_nm]["timestamp"] = time.time() + self._timer_delay
+                        self._dev_timers[dev_url][o_nm]["timestamp"] = time.time()
 
                     if o_nm not in dev:
                         dev[o_nm] = 1
@@ -643,7 +643,7 @@ class HomeAssistantSkill(GenericSkill):
             for item in self._dev_timers.get(dev_url, {}):
                 if item not in dev:
                     self._dev_timers[dev_url][item]["trigger"] = False
-                    self._dev_timers[dev_url][item]["timestamp"] = time.time() + self._timer_delay
+                    # self._dev_timers[dev_url][item]["timestamp"] = time.time() + self._timer_delay
 
             self.logger.debug(f"HOMEASSISTANTSKILL: {dev}")
             self.logger.debug(f"HOMEASSISTANTSKILL: {self._dev_timers[dev_url]}")
