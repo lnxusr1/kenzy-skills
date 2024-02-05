@@ -40,7 +40,7 @@ class HomeAssistantSkill(GenericSkill):
 
         self.name = "HomeAssistantSkill"
         self.description = "Control HomeAssistant lights, fans, covers, and doors"
-        self._version = [1, 1, 4]
+        self._version = [1, 1, 5]
 
         self.logger.debug(f"{self.name} loaded successfully.")
 
@@ -576,7 +576,7 @@ class HomeAssistantSkill(GenericSkill):
     def _image_timer(self):
         self._timer_running.set()
 
-        while self._timer_running:
+        while self._timer_running.is_set():
             for dev_url in self._dev_timers:
                 dev_name = self.device.service.remote_devices.get(dev_url, {}).get("name", "")
                 for trg in self._triggers:
