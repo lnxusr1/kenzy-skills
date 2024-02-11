@@ -28,7 +28,9 @@ with open(os.path.join(os.path.dirname(__file__), "README.md"), "w", encoding="U
                     "path": skill_name,
                     "name": skill.name,
                     "description": skill.description,
-                    "version": skill.version
+                    "version": skill.version,
+                    "app_min_version": skill.app_min_version,
+                    "app_max_version": skill.app_max_version
                 }
 
                 os.makedirs(os.path.join(api_folder, "pkg", skill_name), exist_ok=True)

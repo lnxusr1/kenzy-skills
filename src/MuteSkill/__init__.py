@@ -17,6 +17,7 @@ class MuteSkill(GenericSkill):
         self.name = "MuteSkill"
         self.description = "Silences responses until a new command is received"
         self._version = [1, 0, 0]
+        self._app_min_version = [2, 1, 4]
 
         self.logger.debug(f"{self.name} loaded successfully.")
     
@@ -51,8 +52,7 @@ class MuteSkill(GenericSkill):
         if c_loc in self.device.skill_manager.activated:
             self.device.skill_manager.activated[c_loc] = 0
         
-        self.logger.debug(f"{c_loc}")
-        self.logger.debug(f"{self.name}: Activated.")
+        self.logger.debug(f"{self.name}: Deactivated {c_loc}.")
 
         return True
     
