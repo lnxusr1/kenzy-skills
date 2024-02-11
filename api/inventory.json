@@ -35,6 +35,12 @@
         "description": "Respond to Knock Knock jokes",
         "version": "1.0.0"
     },
+    "MuteSkill": {
+        "path": "MuteSkill",
+        "name": "MuteSkill",
+        "description": "Silences responses until a new command is received",
+        "version": "1.0.0"
+    },
     "NewsSkill": {
         "path": "NewsSkill",
         "name": "NewsSkill",
