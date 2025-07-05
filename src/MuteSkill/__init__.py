@@ -1,36 +1,39 @@
 from kenzy import GenericSkill
+from kenzy.core import KenzyContext
 
 
-class ThankYouSkill(GenericSkill):
+class MuteSkill(GenericSkill):
     """
-    Skill to say "Thank You"
+    Skill to deactivate Kenzy
     """
     
     def __init__(self, **kwargs):
         """
-        Thank You Skill Initialization
+        Mute Skill Initialization
         """
         
         super().__init__(**kwargs)
 
-        self.name = "ThankYouSkill"
-        self.description = "Politely responds to Thank You"
-        self._version = [1, 0, 2]
-        
+        self.name = "MuteSkill"
+        self.description = "Silences responses until a new command is received"
+        self._version = [1, 0, 0]
+        self._app_min_version = [2, 1, 4]
+
         self.logger.debug(f"{self.name} loaded successfully.")
     
     def initialize(self):
         """
-        Load intent files for Thank You Skill
+        Load intent files for Mute Skill
+        self.logger = kwargs.get("logger", logging.getLogger("SKILL"))
         
         Returns:
             (bool): True on success else raises an exception
         """
 
-        self.register_intent_file("thankyou.intent", self.handle_thankyou_intent)
+        self.register_intent_file("mute.intent", self.handle_mute_intent)
         return True
         
-    def handle_thankyou_intent(self, message, context=None, **kwargs):
+    def handle_mute_intent(self, message, context=None, **kwargs):
         """
         Primary function for intent matches.  Called by skill manager.
         
@@ -42,12 +45,16 @@ class ThankYouSkill(GenericSkill):
             (bool): True on success or False on failure
         """
         
-        if message.conf == 1.0 and str(kwargs.get("raw", "")).lower().strip().strip("?.!") in ["thank you", "thanks"]:
-            text = self.getMessageFromDialog("thankyou.dialog")
-            if (text != ""):
-                return self.say(text, context=context)
+        c_loc = "none"
+        if isinstance(context, KenzyContext):
+            c_loc = str(context.location).lower()
+
+        if c_loc in self.device.skill_manager.activated:
+            self.device.skill_manager.activated[c_loc] = 0
         
-        return False
+        self.logger.debug(f"{self.name}: Deactivated {c_loc}.")
+
+        return True
     
     def stop(self):
         """
@@ -64,7 +71,7 @@ def create_skill(**kwargs):
     Method to create the instance of this skill for delivering to the skill manager
     
     Returns:
-        (object): ThankYouSkill instantiated class object
+        (object): MuteSkill instantiated class object
     """
     
-    return ThankYouSkill(**kwargs)
+    return MuteSkill(**kwargs)

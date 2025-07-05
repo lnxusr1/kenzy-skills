@@ -19,8 +19,10 @@ class WatcherSkill(GenericSkill):
         self.plurals = {}
         self.name = "WatcherSkill"
         self.description = "Query kenzy.image devices"
-        self._version = [1, 0, 2]
+        self._version = [1, 1, 0]
         
+        self.filters = None
+
         self.logger.debug(f"{self.name} loaded successfully.")
     
     def initialize(self):
@@ -30,6 +32,10 @@ class WatcherSkill(GenericSkill):
         Returns:
             (bool): True on success else raises an exception
         """
+
+        self.filters = self.get_setting("filters")
+        if isinstance(self.filters, list):
+            self.filters = [str(x).lower() for x in self.filters]
 
         with open(os.path.join(os.path.dirname(__file__), "plurals.yml"), "r", encoding="UTF-8") as fp:
             self.plurals = yaml.safe_load(fp)
@@ -56,7 +62,8 @@ class WatcherSkill(GenericSkill):
         for dev_url in data:
             d = data.get(dev_url)
             for o in d.get("objects", []):
-                objects[o.get("name")] = objects.get(o.get("name"), 0) + 1
+                if not isinstance(self.filters, list) or str(o.get("name")).lower() in self.filters:
+                    objects[o.get("name")] = objects.get(o.get("name"), 0) + 1
 
             if dev_url in self.device.service.remote_devices:
                 location = self.device.service.remote_devices.get(dev_url).get("location")

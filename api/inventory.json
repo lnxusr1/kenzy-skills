@@ -3,78 +3,112 @@
         "path": "AboutSkill",
         "name": "AboutSkill",
         "description": "Info about KENZY",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "CheckVersionSkill": {
         "path": "CheckVersionSkill",
         "name": "CheckVersionSkill",
         "description": "Get software version",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "FlipACoinSkill": {
         "path": "FlipACoinSkill",
         "name": "FlipACoinSkill",
         "description": "Flips a coin for heads or tails",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "HelloSkill": {
         "path": "HelloSkill",
         "name": "HelloSkill",
         "description": "Generic greeting responses",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "HomeAssistantSkill": {
         "path": "HomeAssistantSkill",
         "name": "HomeAssistantSkill",
         "description": "Control HomeAssistant lights, fans, covers, and doors",
-        "version": "1.1.5"
+        "version": "1.1.5",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "KnockKnockSkill": {
         "path": "KnockKnockSkill",
         "name": "KnockKnockSkill",
         "description": "Respond to Knock Knock jokes",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "app_min_version": null,
+        "app_max_version": null
+    },
+    "MuteSkill": {
+        "path": "MuteSkill",
+        "name": "MuteSkill",
+        "description": "Silences responses until a new command is received",
+        "version": "1.0.0",
+        "app_min_version": "2.1.4",
+        "app_max_version": null
     },
     "NewsSkill": {
         "path": "NewsSkill",
         "name": "NewsSkill",
         "description": "RSS feed reader",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "PowerDownSkill": {
         "path": "PowerDownSkill",
         "name": "PowerDownSkill",
         "description": "Shutdown all services",
-        "version": "1.0.1"
+        "version": "1.0.1",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "TellDateTimeSkill": {
         "path": "TellDateTimeSkill",
         "name": "TellDateTimeSkill",
         "description": "Gives the current date and time",
-        "version": "1.0.1"
+        "version": "1.0.1",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "TellJokeSkill": {
         "path": "TellJokeSkill",
         "name": "TellJokeSkill",
         "description": "Tells a random joke",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "ThankYouSkill": {
         "path": "ThankYouSkill",
         "name": "ThankYouSkill",
         "description": "Politely responds to Thank You",
-        "version": "1.0.1"
+        "version": "1.0.2",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "WatcherSkill": {
         "path": "WatcherSkill",
         "name": "WatcherSkill",
         "description": "Query kenzy.image devices",
-        "version": "1.0.2"
+        "version": "1.1.0",
+        "app_min_version": null,
+        "app_max_version": null
     },
     "WeatherSkill": {
         "path": "WeatherSkill",
         "name": "WeatherSkill",
         "description": "Retrieves and displays current weather conditions.",
-        "version": "1.0.1"
+        "version": "1.0.1",
+        "app_min_version": null,
+        "app_max_version": null
     }
 }
