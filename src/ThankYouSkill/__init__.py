@@ -15,7 +15,7 @@ class ThankYouSkill(GenericSkill):
 
         self.name = "ThankYouSkill"
         self.description = "Politely responds to Thank You"
-        self._version = [1, 0, 1]
+        self._version = [1, 0, 2]
         
         self.logger.debug(f"{self.name} loaded successfully.")
     
@@ -42,7 +42,7 @@ class ThankYouSkill(GenericSkill):
             (bool): True on success or False on failure
         """
         
-        if message.conf == 1.0:
+        if message.conf == 1.0 and str(kwargs.get("raw", "")).lower().strip().strip("?.!") in ["thank you", "thanks"]:
             text = self.getMessageFromDialog("thankyou.dialog")
             if (text != ""):
                 return self.say(text, context=context)
