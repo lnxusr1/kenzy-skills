@@ -48,14 +48,14 @@ with open(os.path.join(os.path.dirname(__file__), "README.md"), "w", encoding="U
 
                 if os.path.isfile(os.path.join(source_folder, skill_name, "README.md")):
                     shutil.copy(os.path.join(source_folder, skill_name, "README.md"), os.path.join(src_fldr, "docs", f"kenzy.skills.{skill_name}.md"))
-                    ks.write(f"* [{skill_name}](https://docs.kenzy.ai/en/latest/kenzy.skills.{skill_name}/) - {skill.version}\n")
+                    ks.write(f"* [{skill_name}](https://docs.kenzy.dev/en/latest/kenzy.skills.{skill_name}/) - {skill.version}\n")
                 else:
                     ks.write(f"* {skill_name} - {skill.version}\n")
                     
             except:
                 pass
 
-    ks.write("\n-----\n\n## Help & Support\n\nHelp and additional details is available at [https://kenzy.ai](https://kenzy.ai)")
+    ks.write("\n-----\n\n## Help & Support\n\nHelp and additional details is available at [https://kenzy.dev](https://kenzy.dev)")
 
 with open(os.path.join(api_folder, "inventory.json"), "w", encoding="UTF-8") as sw:
     json.dump(inventory, sw, indent=4)
